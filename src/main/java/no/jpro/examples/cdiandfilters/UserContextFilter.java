@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 
 import java.io.IOException;
 
-@WebFilter(urlPatterns = "/*")
+@WebFilter(urlPatterns = {"/*", "/faces/*"})
 public class UserContextFilter implements Filter {
 	private static int instanceCounter = 0;
 	private int instanceNumber;
