@@ -21,6 +21,7 @@ public class UserContextHolder implements Serializable {
 	public UserContext getUserContext() {
 		if (userContext == null) {
 			userContext = new UserContext();
+			System.out.println("UserContextHolder instance " + instanceNumber + " created NEW user context");
 		}
 		System.out.println("UserContextHolder instance " + instanceNumber + " returns user context for " + userContext.getName());
 		return userContext;

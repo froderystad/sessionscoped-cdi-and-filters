@@ -18,6 +18,7 @@ public class UserContextFilter implements Filter {
 	
 	@Inject
 	private UserContextHolder userContextHolder;
+//	private Instance<UserContext> userContext;
 	
 	public UserContextFilter() {
 		instanceNumber = ++instanceCounter;
@@ -32,6 +33,7 @@ public class UserContextFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		System.out.println("UserContextFilter " + instanceNumber +  " filtering request for user " + userContextHolder.getUserContext().getName());
+//		System.out.println("UserContextFilter " + instanceNumber +  " filtering request for user " + userContext.get().getName());
 		chain.doFilter(request, response);
 	}
 

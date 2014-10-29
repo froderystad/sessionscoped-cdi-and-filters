@@ -1,5 +1,6 @@
 package no.jpro.examples.cdiandfilters;
 
+import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,11 +13,11 @@ import java.io.IOException;
 @WebServlet(urlPatterns = {"/logout"})
 public class LogoutServlet extends HttpServlet {
 	@Inject
-	private UserContext userContext;
+	private Instance<UserContext> userContext;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("Logging out user " + userContext.getName());
+		System.out.println("Logging out user " + userContext.get().getName());
 		req.getSession().invalidate();
 		resp.sendRedirect("/");
 	}
